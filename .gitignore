@@ -1,0 +1,7 @@
+venv
+unix_venv
+app/__pycache__
+
+.env
+
+test.db
