@@ -57,7 +57,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 
 @router.get("/conversation")
 async def read_conversation(
-    current_user: schemas.UserInDB = Depends(auth.get_current_user)
+    current_user: schemas.UserInDB = Depends(auth.get_current_active_user)
 ):
     return {
         "conversation": "Yessssss",

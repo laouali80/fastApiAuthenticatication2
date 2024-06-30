@@ -44,3 +44,10 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
     return user
 
 
+async def get_current_active_user(current_user: schemas.UserInDB = Depends(get_current_user)):
+    """To check if a user is disable/active from login."""
+
+    if current_user.disabled:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Inactive user")
+    
+    return current_user 
